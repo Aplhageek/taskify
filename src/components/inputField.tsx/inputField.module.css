@@ -43,10 +43,10 @@
     transition: all 0.2s ease;
 }
 
-.btn:hover {
+.btn:not(:disabled):hover {
     background-color: rgb(21, 101, 150);
 }
 
-.btn:active {
+.btn:not([disabled]):active {
     transform: scale(0.8);
 }

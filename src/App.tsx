@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import InputField from './components/inputField.tsx/inputField'
 
 // app is of type react functional component
-const App : React.FC = () => {
+const App: React.FC = () => {
+  const [todo, setTodo] = useState<string>("");
 
-  useEffect (() => {
+  const createTodo = (newTodo: string) => {
+    setTodo(newTodo);
+  }
+
+  console.log(todo);
+
+  useEffect(() => {
     document.title = "Taskade"
   }, []);
 
   return (
     <div className="app">
-      <span className="heading">Taskade</span> 
-      <InputField />
+      <span className="heading">Taskade</span>
+      <InputField createTodo={createTodo} />
     </div>
   )
 }
