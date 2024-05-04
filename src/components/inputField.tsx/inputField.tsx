@@ -12,8 +12,9 @@ const InputField: React.FC<InputFieldProps> = ({ createTodo }) => {
     const [inputVal, setInputValue] = useState<string>("");
 
     // TODO: prevent default behaviour of reloading after submit btn clicked
-    const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        
 
         if (inputVal.trim().length < 1) {
             alert("Please Enter the Todo First!");
@@ -31,7 +32,7 @@ const InputField: React.FC<InputFieldProps> = ({ createTodo }) => {
 
 
     return (
-        <form className={styles.inputForm}>
+        <form className={styles.inputForm} onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder='Enter a Task'
@@ -42,7 +43,6 @@ const InputField: React.FC<InputFieldProps> = ({ createTodo }) => {
             <button
                 type="submit"
                 className={styles.btn}
-                onClick={handleSubmit}
                 disabled={!inputVal.trim()}
             >
                 GO
