@@ -1,0 +1,15 @@
+.todoList{
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+@media (max-width : 950px) {
+    .todoList{
+        justify-content: center;
+    }
+}

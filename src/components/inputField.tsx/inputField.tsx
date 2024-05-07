@@ -26,7 +26,6 @@ const InputField: React.FC<InputFieldProps> = ({ createTodo }) => {
         setInputValue("");
     }
 
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
     }
