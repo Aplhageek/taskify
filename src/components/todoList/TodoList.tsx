@@ -4,15 +4,16 @@ import styles from './todoList.module.css';
 import TodoCard from "../todoCard/TodoCard";
 
 interface Prop {
-    todoList: Todo[];
+  todoList: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodoList: React.FC<Prop> = ({todoList}) => {
+const TodoList: React.FC<Prop> = ({ todoList, setTodos }) => {
   return (
     <section className={styles.todoList}>
-        {
-            todoList.map((todo) => <TodoCard todo={todo.todo} key={todo.id}/> )
-        }
+      {
+        todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
+      }
     </section>
   )
 }

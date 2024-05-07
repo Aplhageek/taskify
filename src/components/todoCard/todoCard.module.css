@@ -43,6 +43,12 @@
 }
 
 
+.editInput{
+    background-color: transparent;
+    border: none;
+}
+
+
 /* RESPONSIVE */
 @media (max-width : 1100px) {
     .card{
