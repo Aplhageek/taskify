@@ -10,38 +10,39 @@ import { CiSaveUp2 } from 'react-icons/ci';
 interface Prop {
     todo: Todo;
     setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+    setFinishedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoCard: React.FC<Prop> = ({ todo, setTodos }) => {
+
+const TodoCard: React.FC<Prop> = ({ todo, setTodos, setFinishedTodos }) => {
     const [isEditMode, setIsEditMode] = useState<boolean>(false);
     const [editedText, setEditedText] = useState<string>(todo.todo);
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleCheck = (id: number) => {
-        setTodos(prevTodos => {
-            return prevTodos.map(todo => {
-                if (todo.id === id) {
-                    return { ...todo, isFinished: true }
-                }
-                return todo;
-            })
-        })
+    const handleMove = async (id: number, setMoveFrom: React.Dispatch<React.SetStateAction<Todo[]>>, setMoveTo: React.Dispatch<React.SetStateAction<Todo[]>>) => {
+        let TodoObj: Todo | null = null;
+
+        await setMoveFrom(prevTodos => prevTodos.filter(todo => {
+            if (todo.id === id) {
+                TodoObj = todo;
+                return false;
+            }
+            return true;
+        }));
+
+        console.log(TodoObj);
+        console.log(id);
+
+        if (TodoObj !== null) {
+            const todo = TodoObj as Todo;
+            todo.isFinished = !todo.isFinished;
+            await setMoveTo(prev => [...prev, todo]);
+        }
     }
 
-    const handleRestore = (id: number) => {
-        setTodos(prevTodos => {
-            return prevTodos.map(todo => {
-                if (todo.id === id) {
-                    return { ...todo, isFinished: false }
-                }
-                return todo;
-            })
-        });
-    }
-
-    const handleDelete = (id: number) => {
-        setTodos(prevTodos => {
+    const handleDelete = (id: number, setStateUpdater : React.Dispatch<React.SetStateAction<Todo[]>>) => {
+        setStateUpdater(prevTodos => {
             return prevTodos.filter(todo => todo.id !== id);
         });
     }
@@ -78,7 +79,7 @@ const TodoCard: React.FC<Prop> = ({ todo, setTodos }) => {
     }, [isEditMode]);
 
     return (
-        <form className={styles.card} onSubmit={(event) => handleSubmit(event, todo.id, editedText)}>
+        <form className={`${styles.card} ${todo.isFinished ? styles.finished : ""}`} onSubmit={(event) => handleSubmit(event, todo.id, editedText)}>
             {
                 isEditMode ?
                     (<input type='text' className={styles.editInput} value={editedText} onChange={handleInputChange} ref={inputRef} />) :
@@ -97,12 +98,17 @@ const TodoCard: React.FC<Prop> = ({ todo, setTodos }) => {
 
                 }
 
-                <AiOutlineDelete onClick={() => handleDelete(todo.id)} />
+                {
+                    !todo.isFinished ?
+                        (<AiOutlineDelete onClick={() => handleDelete(todo.id , setTodos)} />) :
+                        (<AiOutlineDelete onClick={() => handleDelete(todo.id , setFinishedTodos)} />)
+                }
 
                 {
                     !todo.isFinished ?
-                        (<IoCheckboxOutline onClick={() => handleCheck(todo.id)} />) :
-                        (<MdSettingsBackupRestore onClick={() => handleRestore(todo.id)} />)
+                        // (<IoCheckboxOutline onClick={() => handleCheck(todo.id)} />) :
+                        (<IoCheckboxOutline onClick={() => handleMove(todo.id, setTodos, setFinishedTodos)} />) :
+                        (<MdSettingsBackupRestore onClick={() => handleMove(todo.id, setFinishedTodos, setTodos)} />)
                 }
 
             </div>

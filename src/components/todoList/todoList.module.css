@@ -3,6 +3,7 @@
     justify-content: space-between;
     width: 90%;
     margin: 70px auto;
+    align-items: flex-start;
 }
 
 .todoList{
@@ -13,7 +14,7 @@
     flex-wrap: wrap;
     padding: 20px 10px;
     border-radius: 1rem;
-    min-height: 119px;
+    min-height : 119px;
 }
 
 .todoListCompleted{
@@ -21,12 +22,24 @@
 }
 
 .todoListActive{
-    background-color:  rgb(234, 226, 183) ;
+    background-color:  rgb(234, 226, 183);
+}
+.heading{
+    align-self: self-start;
+    width: 100%;
+    text-align: start;
+    padding-left: 10px;
+    font-size: 30px;
+    color: rgb(20, 21, 53);
+    font-weight: bold;
 }
 
 @media (max-width : 1250px) {
     .todoList{
         flex-direction: column;
+    }
+    .heading{
+        font-size: 25px;
     }
 }
 
@@ -37,11 +50,13 @@
         flex-direction: row;
         margin: 15px;
         justify-content: space-around;
-        
     }
     .wrapper{
         flex-direction: column;
         width: 90%;
         align-items: center;
+    }
+    .heading{
+        font-size: 20px;
     }
 }

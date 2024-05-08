@@ -8,6 +8,17 @@
     background-color: #023047;
     overflow: hidden;
     /* flex-grow: 1; */
+    transition: all 0.2s ease;
+}
+
+.card:hover{
+    box-shadow: 0 0 10px rgb(21, 101, 150);;
+    transform: scale(1.03);
+}
+
+.finished{
+    background-color: grey;
+    opacity: 0.5;
 }
 
 .actionbtn{
@@ -45,10 +56,11 @@
 .editInput{
     background-color: white;
     color: black;
-    padding: 2px 10px;
+    padding: 2px ;
     border-radius: 5px;
     /* outline: none; */
-    flex: 1;
+    /* flex: 1; */
+    max-width: 150px;
     margin-right: 10px;
 }
 

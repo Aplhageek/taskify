@@ -6,33 +6,28 @@ import TodoCard from "../todoCard/TodoCard";
 interface Prop {
   todoList: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  finishedTodos : Todo[];
+  setFinishedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodoList: React.FC<Prop> = ({ todoList, setTodos }) => {
+const TodoList: React.FC<Prop> = ({ todoList, setTodos, finishedTodos, setFinishedTodos }) => {
 
   return (
     <main className={styles.wrapper}>
       <section className={`${styles.todoList} ${styles.todoListActive}`} >
+        <h3 className={styles.heading}>Active Tasks</h3>
         {
-          todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
+          todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos}  setFinishedTodos={setFinishedTodos}/>)
         }
       </section>
       <section className={`${styles.todoList} ${styles.todoListCompleted}`}>
+        <h3 className={styles.heading}>Finished Tasks</h3>
         {
-          todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
+          finishedTodos.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos}  setFinishedTodos={setFinishedTodos}/>)
         }
       </section>
     </main>
   )
 }
 
-/*
-
-<section className={styles.todoList}>
-      {
-        todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
-      }
-</section>
-
-*/
 export default TodoList; 
