@@ -1,6 +1,6 @@
 import { LiaEdit } from 'react-icons/lia';
 import styles from './todoCard.module.css';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
 import Todo from '../../Models/todo.model';
 import { MdSettingsBackupRestore } from 'react-icons/md';
@@ -16,6 +16,7 @@ const TodoCard: React.FC<Prop> = ({ todo, setTodos }) => {
     const [isEditMode, setIsEditMode] = useState<boolean>(false);
     const [editedText, setEditedText] = useState<string>(todo.todo);
 
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleCheck = (id: number) => {
         setTodos(prevTodos => {
@@ -51,26 +52,36 @@ const TodoCard: React.FC<Prop> = ({ todo, setTodos }) => {
         }
     };
 
-    const handleSave = (id : number) => {
+    const handleSave = (id: number, editedTextP: string) => {
+        if (editedTextP.trim().length <= 0) {
+            return;
+        }
         // 
         setIsEditMode(!isEditMode);
-        setTodos(prevTodos => prevTodos.map(todo => todo.id === id ? {...todo, todo : editedText} : todo ));
+        setTodos(prevTodos => prevTodos.map(todo => todo.id === id ? { ...todo, todo: editedTextP } : todo));
     }
 
-    const handleSubmit = (event : React.FormEvent<HTMLFormElement>, id : number) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>, id: number, editedTextP: string) => {
         event.preventDefault();
-        handleSave(id);
+        handleSave(id, editedTextP);
     }
 
-    const handleInputChange = (event :  React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEditedText(event.target.value);
     }
 
+
+    useEffect(() => {
+        if (isEditMode) {
+            inputRef.current?.focus();
+        }
+    }, [isEditMode]);
+
     return (
-        <form className={styles.card} onSubmit={(event) => handleSubmit(event, todo.id)}>
+        <form className={styles.card} onSubmit={(event) => handleSubmit(event, todo.id, editedText)}>
             {
                 isEditMode ?
-                    (<input type='text' className={styles.editInput} value={editedText} onChange={handleInputChange} />) :
+                    (<input type='text' className={styles.editInput} value={editedText} onChange={handleInputChange} ref={inputRef} />) :
                     (
                         todo.isFinished ?
                             (<s className={styles.todoText}>{todo.todo}</s>) :
@@ -80,9 +91,9 @@ const TodoCard: React.FC<Prop> = ({ todo, setTodos }) => {
 
             <div className={styles.actionbtn}>
                 {
-                    isEditMode ? 
-                    (<CiSaveUp2 onClick={() => handleSave(todo.id)} />):
-                    (<LiaEdit onClick={handleEdit} />)
+                    isEditMode ?
+                        (<CiSaveUp2 onClick={() => handleSave(todo.id, editedText)} />) :
+                        (<LiaEdit onClick={handleEdit} />)
 
                 }
 

@@ -9,13 +9,30 @@ interface Prop {
 }
 
 const TodoList: React.FC<Prop> = ({ todoList, setTodos }) => {
+
   return (
-    <section className={styles.todoList}>
-      {
-        todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
-      }
-    </section>
+    <main className={styles.wrapper}>
+      <section className={`${styles.todoList} ${styles.todoListActive}`} >
+        {
+          todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
+        }
+      </section>
+      <section className={`${styles.todoList} ${styles.todoListCompleted}`}>
+        {
+          todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
+        }
+      </section>
+    </main>
   )
 }
 
-export default TodoList;
+/*
+
+<section className={styles.todoList}>
+      {
+        todoList.map((todo) => <TodoCard todo={todo} key={todo.id} setTodos={setTodos} />)
+      }
+</section>
+
+*/
+export default TodoList; 

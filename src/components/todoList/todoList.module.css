@@ -1,15 +1,47 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 70px auto;
+}
+
 .todoList{
-    height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 48%;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 20px 10px;
+    border-radius: 1rem;
+    min-height: 119px;
 }
+
+.todoListCompleted{
+    background-color: rgba(214,40,40,0.6 );
+}
+
+.todoListActive{
+    background-color:  rgb(234, 226, 183) ;
+}
+
+@media (max-width : 1250px) {
+    .todoList{
+        flex-direction: column;
+    }
+}
+
 
 @media (max-width : 950px) {
     .todoList{
-        justify-content: center;
+        width: 95%;
+        flex-direction: row;
+        margin: 15px;
+        justify-content: space-around;
+        
+    }
+    .wrapper{
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
     }
 }

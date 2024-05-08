@@ -1,21 +1,19 @@
 .card{
-    width: 29.5%;
+    width: 45%;
     padding: 20px;
     border-radius: 5px;
-    margin-top: 15px;
+    margin: 15px 10px;
     display: flex;
     justify-content: space-between;
-    /* background-image: url("https://images.unsplash.com/photo-1593012369860-3cbdee51626c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUyfHx0ZXh1cmVkJTIwYmFja2dyb3VuZCUyMGJsdWV8ZW58MHx8MHx8fDA%3D"); */
-    background-image: url("https://images.unsplash.com/photo-1577483770234-1b8eafcb703a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHRleHVyZWQlMjBiYWNrZ3JvdW5kJTIwYmx1ZXxlbnwwfHwwfHx8MA%3D%3D");
-    object-position: center;
+    background-color: #023047;
     overflow: hidden;
+    /* flex-grow: 1; */
 }
 
 .actionbtn{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
 }
 
 
@@ -34,8 +32,9 @@
     flex: 1;
     text-align: start;
     border: none;
+    text-overflow :ellipsis;
     overflow: hidden;
-    text-overflow :ellipsis
+    white-space: nowrap;
 }
 
 .todoText:focus{
@@ -44,20 +43,33 @@
 
 
 .editInput{
-    background-color: transparent;
-    border: none;
+    background-color: white;
+    color: black;
+    padding: 2px 10px;
+    border-radius: 5px;
+    /* outline: none; */
+    flex: 1;
+    margin-right: 10px;
 }
 
 
 /* RESPONSIVE */
-@media (max-width : 1100px) {
+@media (max-width : 1250px) {
+    .card{
+        width: 85%;
+    }
+    .actionbtn {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width : 950px) {
     .card{
         width: 45%;
     }
-}
-@media (max-width : 950px) {
-    .card{
-        width: 60%;
+
+    .actionbtn {
+        gap: 0;
     }
 }
 
