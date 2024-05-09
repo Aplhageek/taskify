@@ -16,6 +16,15 @@ Check out the [demo](https://taskade-jd.netlify.app/) to see Taskade in action! 
 - ✅ Fully responsive 📱
 - ✅ Access Taskade on multiple devices 🖥️
 
+## Lighthouse report
+![image](https://github.com/Aplhageek/taskify/assets/98767655/e297764d-e520-43fe-a941-7d435e9b18a0)
+
+
+
+![image](https://github.com/Aplhageek/taskify/assets/98767655/a0c0cde0-17d1-46bc-81de-8cf571d28578)
+
+
+
 
 ## 🛠️ Technologies Used
 - **React**: Frontend JavaScript library for building user interfaces. ⚛️
