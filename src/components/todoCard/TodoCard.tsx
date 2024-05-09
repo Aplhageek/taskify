@@ -31,9 +31,6 @@ const TodoCard: React.FC<Prop> = ({ todo, setTodos, setFinishedTodos }) => {
             return true;
         }));
 
-        console.log(TodoObj);
-        console.log(id);
-
         if (TodoObj !== null) {
             const todo = TodoObj as Todo;
             todo.isFinished = !todo.isFinished;

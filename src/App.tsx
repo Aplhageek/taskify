@@ -51,11 +51,6 @@ const App: React.FC = () => {
     localStorage.setItem(config.finishedTodosLocalStorageKey , JSON.stringify(finishedTodos));
   }, [finishedTodos]);
 
-
-  console.log(todos);
-  console.log("================================================");
-  console.log(finishedTodos );
-
   return (
     <div className="app">
       <span className="heading">Taskade</span>
