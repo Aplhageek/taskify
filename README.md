@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+# 🚀 Taskade
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Taskade is a powerful task management website that helps you organize your tasks and projects efficiently and achieve your goals seamlessly.
 
-Currently, two official plugins are available:
+## 🌐 Live Link  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the [demo](https://taskade-jd.netlify.app/) to see Taskade in action! deployed on netlify ☁️
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🌟 Features
 
-- Configure the top-level `parserOptions` property like this:
+- ✅ Create tasks, lists, and projects 🌟
+- ✅ Manage ongoing and completed tasks 📝
+- ✅ Option to edit tasks ✏️
+- ✅ Option to restore tasks 🔄  
+- ✅ Fully responsive 📱
+- ✅ Access Taskade on multiple devices 🖥️
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+
+## 🛠️ Technologies Used
+- **React**: Frontend JavaScript library for building user interfaces. ⚛️
+- **Vite**: Fast and modern frontend build tool for React applications. 🚀
+- **TypeScript**: Typed superset of JavaScript for enhanced code quality and developer productivity. 📝
+- **Netlify**: Platform for continuous deployment and hosting of web projects. ☁️
+
+
+## 🚀 Getting Started
+
+To get started with Taskade, simply sign up on our website and start creating your tasks and projects. Taskade is designed to be intuitive and user-friendly, so you can start organizing your work immediately.
+
+### 🚀 Installation
+
+Clone the gitHub repo and execute following commands
+Make sure you have npm and node installed
+
+```
+npm i
+```
+```
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## 🆘 Support
+
+If you have any questions or need assistance, feel free to reach out to [Linkedin](https://www.linkedin.com/in/jayesh-ahirrao/) or open issue in github repo
+
+## 👨‍💻👩‍💻 Contributing
+
+We welcome contributions from the community! If you have ideas for new features or improvements, please submit a pull request or open an issue on our GitHub repository.
+
+## 👨‍💼👩‍💼 Connect with me on: 
+ 👨‍💼 [Linkedin](https://www.linkedin.com/in/jayesh-ahirrao/) 
+
+## 👩‍💻 My leetcode profile:
+ 🧠 [Leetcode](https://leetcode.com/u/Alphageek01/) 
+  
+
+### Happy tasking! 🎉
